@@ -32,6 +32,10 @@ first_birth_cohort <- 1913
 # history
 unpenalised_columns <- c("SEX", "BIRTH_COHORT_CATEGORY", "EDUCATION")
 
+# Run from RStudio on DST: the repo folder, and "server" as the settings file
+setwd("E:/workdata/709816/Personal folders/Mathilde/Projects/p1_transformers/Models/dementiaformer-main")
+commandArgs <- function(...) "server"
+
 # Paths from the settings file named on the command line: synthetic or server
 arguments <- commandArgs(trailingOnly = TRUE)
 if (length(arguments) < 1) {
@@ -349,3 +353,6 @@ write_csv(calibration_by_risk_tenth, results_file("calibration_by_risk_tenth"))
 
 # Record the package versions in the output
 sessionInfo()
+
+# Restore R's own commandArgs for the rest of the RStudio session
+rm(commandArgs)
